@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DevFreela.API.Controllers
 {
     [Route("api/projects")]
-    public class PojectsController : ControllerBase
+    public class ProjectsController : ControllerBase
     {
         // api/projects?query=net core
         [HttpGet]
@@ -46,6 +46,24 @@ namespace DevFreela.API.Controllers
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPost("{id}/comments")]
+        public IActionResult PostComment(int id, [FromBody] CreateCommentModel createCommentModel)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}/start")]
+        public IActionResult Start(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}/finish")]
+        public IActionResult Finish(int id)
         {
             return NoContent();
         }
