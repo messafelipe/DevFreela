@@ -11,9 +11,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("OpeningTime"));
 
-//builder.Services.AddSingleton<ExampleClass>(e => new ExampleClass { Name = "Initial Stage"});
+builder.Services.AddSingleton(e => new ExampleClass { Name = "Initial Stage"});
 
-builder.Services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
+//builder.Services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 
 var app = builder.Build();
 
