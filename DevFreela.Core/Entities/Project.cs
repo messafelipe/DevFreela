@@ -29,5 +29,40 @@ namespace DevFreela.Core.Entities
         public DateTime? FinisheAt { get; private set; }
         public ProjectStatusEnum Status { get; private set; }
         public List<ProjectComment> Comments { get; set; }
+
+        public void Cancel()
+        {
+            if(Status == ProjectStatusEnum.InProgress || Status == ProjectStatusEnum.Finished)
+                Status = ProjectStatusEnum.Cancelled;
+        }
+
+
+        public void Start()
+        {
+            if (Status == ProjectStatusEnum.Created)
+            {
+                Status = ProjectStatusEnum.InProgress;
+                StartedAt = DateTime.Now;
+            }
+        }
+
+        public void Finish()
+        {
+            if (Status == ProjectStatusEnum.InProgress)
+            {
+                Status = ProjectStatusEnum.Finished;
+                FinisheAt = DateTime.Now;
+            }
+        }
+
+        /// <summary>
+        /// Vai ser retirado posteriormente, por causa do Entity Framework
+        /// </summary>
+        public void Update(string title, string description, decimal totalCost)
+        {
+            Title = title;
+            Description = description;
+            TotalCost = totalCost;
+        }
     }
 }
