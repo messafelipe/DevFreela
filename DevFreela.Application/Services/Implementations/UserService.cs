@@ -19,15 +19,20 @@ namespace DevFreela.Application.Services.Implementations
         {
             var user = _dbContext.Users.SingleOrDefault(u => u.Id == id);
 
+            if (user == null)
+            {
+                return new UserViewModel();
+            }
+
             var userViewModel = new UserViewModel( 
-                    user.FullName,
-                    user.Email
-                );
+                user.FullName,
+                user.Email
+            );
 
             return userViewModel;
         }
 
-        public int Post(CreateUserInputModel inputModel)
+        public int Create(CreateUserInputModel inputModel)
         {
             var user = new User(inputModel.FullName, 
                                             inputModel.Password,

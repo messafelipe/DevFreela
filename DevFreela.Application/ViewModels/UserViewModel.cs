@@ -4,6 +4,8 @@ namespace DevFreela.Application.ViewModels
 {
     public class UserViewModel
     {
+        public UserViewModel() { }
+
         public UserViewModel(
             string fullName, 
             string email)
